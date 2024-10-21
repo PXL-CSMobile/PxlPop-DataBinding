@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+                 xmlns:pages="clr-namespace:PxlPop.App.Pages"
                  x:Class="PxlPop.App.Pages.TicketPage"
-                 Title="Tickets">
+                 Title="Tickets" x:DataType="pages:TicketPage">
     <Shell.TitleView>
         <Label Text="Tickets" Style="{StaticResource ShellTitle}"></Label>
     </Shell.TitleView>
@@ -75,11 +76,11 @@
                                     Text="Standaard" VerticalTextAlignment="Center"/>
                             
                             <HorizontalStackLayout Grid.Column="2">
-                                <Button Style="{StaticResource QuantityButton}"
+                                <Button Style="{StaticResource QuantityButton}" Command="{Binding DecreaseStaDayTicketCommand}"
                                         Text="{mi:FontAwesomeSolid Minus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
                                 <Entry Style="{StaticResource QuantityEntry}"
-                                       Text="0" HorizontalTextAlignment="Center"/>
-                                <Button Style="{StaticResource QuantityButton}"
+                                       Text="{Binding StaDayTickets}" HorizontalTextAlignment="Center"/>
+                                <Button Style="{StaticResource QuantityButton}" Command="{Binding IncreaseStaDayTicketCommand}"
                                         Text="{mi:FontAwesomeSolid Plus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
                             </HorizontalStackLayout>
 
@@ -90,11 +91,11 @@
                                     Text="VIP" VerticalTextAlignment="Center"/>
 
                             <HorizontalStackLayout Grid.Row="1" Grid.Column="2">
-                                <Button Style="{StaticResource QuantityButton}"
+                                <Button Style="{StaticResource QuantityButton}" Command="{Binding DecreaseVipDayTicketCommand}"
                                         Text="{mi:FontAwesomeSolid Minus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
                                 <Entry Style="{StaticResource QuantityEntry}"
-                                       Text="0" HorizontalTextAlignment="Center"/>
-                                <Button Style="{StaticResource QuantityButton}"
+                                       Text="{Binding VipDayTickets}" HorizontalTextAlignment="Center"/>
+                                <Button Style="{StaticResource QuantityButton}" Command="{Binding IncreaseVipDayTicketCommand}"
                                         Text="{mi:FontAwesomeSolid Plus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
                             </HorizontalStackLayout>
                         </Grid>
@@ -113,10 +114,9 @@
                         <BoxView Color="{StaticResource Primary}"
                             HeightRequest="2"
                             HorizontalOptions="Fill" />
-                        <Picker Title="Aantal dagen">
+                        <Picker Title="Aantal dagen" SelectedItem="{Binding NumberOfDays}">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:Int32}">
-                                    <x:Int32>1</x:Int32>
                                     <x:Int32>2</x:Int32>
                                     <x:Int32>3</x:Int32>
                                 </x:Array>
@@ -142,11 +142,11 @@
                                 Text="Standaard" VerticalTextAlignment="Center"/>
 
                             <HorizontalStackLayout Grid.Column="2">
-                                <Button Style="{StaticResource QuantityButton}"
+                                <Button Style="{StaticResource QuantityButton}" Command="{Binding DecreaseStaCombiTicketCommand}"
                                     Text="{mi:FontAwesomeSolid Minus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
                                 <Entry Style="{StaticResource QuantityEntry}"
-                                    Text="0" HorizontalTextAlignment="Center" />
-                                <Button Style="{StaticResource QuantityButton}"
+                                    Text="{Binding StaCombiTickets}" HorizontalTextAlignment="Center" />
+                                <Button Style="{StaticResource QuantityButton}" Command="{Binding IncreaseStaCombiTicketCommand}"
                                     Text="{mi:FontAwesomeSolid Plus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
                             </HorizontalStackLayout>
 
@@ -158,11 +158,11 @@
                                 Text="VIP" VerticalTextAlignment="Center"/>
 
                             <HorizontalStackLayout Grid.Row="1" Grid.Column="2">
-                                <Button Style="{StaticResource QuantityButton}"
+                                <Button Style="{StaticResource QuantityButton}" Command="{Binding DecreaseVipCombiTicketCommand}"
                                     Text="{mi:FontAwesomeSolid Minus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
                                 <Entry Style="{StaticResource QuantityEntry}"
-                                    Text="0" HorizontalTextAlignment="Center"/>
-                                <Button Style="{StaticResource QuantityButton}"
+                                    Text="{Binding VipCombiTickets}" HorizontalTextAlignment="Center"/>
+                                <Button Style="{StaticResource QuantityButton}" Command="{Binding IncreaseVipCombiTicketCommand}"
                                     Text="{mi:FontAwesomeSolid Plus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
                             </HorizontalStackLayout>
                         </Grid>
@@ -176,7 +176,7 @@
         </ScrollView>
         <Button Grid.Row="1"
                 Margin="30"
-                Text="Bestellen"
+                Text="{Binding TotalAmount, StringFormat='Totaal: {0:c}'}"
                 ImageSource="{mi:FontAwesomeSolid Icon=CartShopping, IconSize=Large, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}"
                 Clicked="OnOrderClicked"/>
     </Grid>
