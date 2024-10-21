@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="PxlPop.App.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:PxlPop.App"
+    xmlns:pages="clr-namespace:PxlPop.App.Pages"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    Shell.FlyoutBehavior="Flyout"
+    Title="PxlPop.App">
+
+    <Shell.FlyoutHeader>
+        <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="{StaticResource Primary}" >
+            <Image Source="logo_pxl_hogeschool.png" Aspect="AspectFill" />
+        </VerticalStackLayout>
+    </Shell.FlyoutHeader>
+
+    <ShellContent
+        Title="Home"
+        Icon="{mi:FontAwesomeSolid House, IconColor={StaticResource Primary}}"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    
+    <ShellContent
+        Title="Line-up"
+        Icon="{mi:FontAwesomeSolid Music, IconColor={StaticResource Primary}}"
+        ContentTemplate="{DataTemplate pages:LineupPage}"
+        Route="LineupPage" />
+
+    <FlyoutItem Title="Info" Icon="{mi:FontAwesomeSolid CircleInfo, IconColor={StaticResource Primary}}">
+        <ShellContent
+            Title="Parking"
+            Icon="{mi:FontAwesomeSolid Car, IconColor={StaticResource Primary}}"
+            ContentTemplate="{DataTemplate pages:InfoParkingPage}"
+            Route="InfoParkingPage" />
+        <ShellContent
+            Title="Food"
+            Icon="{mi:FontAwesomeSolid Utensils, IconColor={StaticResource Primary}}"
+            ContentTemplate="{DataTemplate pages:InfoFoodPage}"
+            Route="InfoFoodPage" />
+        <ShellContent
+            Title="Drinks"
+            Icon="{mi:FontAwesomeSolid ChampagneGlasses, IconColor={StaticResource Primary}}"
+            ContentTemplate="{DataTemplate pages:InfoDrinksPage}"
+            Route="InfoDrinksPage" />
+    </FlyoutItem>
+
+    <ShellContent
+        Title="Tickets"
+        Icon="{mi:FontAwesomeSolid Ticket, IconColor={StaticResource Primary}}"
+        ContentTemplate="{DataTemplate pages:TicketPage}"
+        Route="TicketPage" />
+
+    <ShellContent
+        Title="Favourites"
+        Icon="{mi:FontAwesomeSolid Heart, IconColor={StaticResource Primary}}"
+        ContentTemplate="{DataTemplate pages:FavouritesPage}"
+        Route="FavouritesPage" />
+    
+    <ShellContent
+        Title="Account"
+        Icon="{mi:FontAwesomeSolid CircleUser, IconColor={StaticResource Primary}}"
+        ContentTemplate="{DataTemplate pages:AccountPage}"
+        Route="AccountPage" />
+
+    <Shell.FlyoutFooter>
+        <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="{StaticResource Primary}">
+            <Label Text="Powered by" HorizontalTextAlignment="Center" Style="{StaticResource Title}" 
+                   TextColor="Black"/>
+            <Image Source="logo_pxl_digital.png" Aspect="AspectFill" />
+        </VerticalStackLayout>
+    </Shell.FlyoutFooter>
+</Shell>

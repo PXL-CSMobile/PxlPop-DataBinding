@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+                 x:Class="PxlPop.App.Pages.TicketPage"
+                 Title="Tickets">
+    <Shell.TitleView>
+        <Label Text="Tickets" Style="{StaticResource ShellTitle}"></Label>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry" x:Key="QuantityEntry">
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}" />
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="5,0"/>
+                <Setter Property="HorizontalTextAlignment" Value="End"/>
+                <Setter Property="MinimumHeightRequest" Value="44"/>
+                <Setter Property="MinimumWidthRequest" Value="44"/>
+                <Setter Property="MaximumWidthRequest" Value="54"/>
+                <Setter Property="MaximumHeightRequest" Value="44"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <Style TargetType="Button" x:Key="QuantityButton">
+                <Setter Property="TextColor" Value="{StaticResource White}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+                <Setter Property="FontFamily" Value="Helvetica"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="CornerRadius" Value="5"/>
+
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="MinimumHeightRequest" Value="10"/>
+                <Setter Property="MinimumWidthRequest" Value="10"/>
+                <Setter Property="MaximumWidthRequest" Value="44"/>
+                <Setter Property="MaximumHeightRequest" Value="44"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Style="{StaticResource PageLayout}">
+                <Border>
+                    <VerticalStackLayout Padding="0" Spacing="15">
+                        <HorizontalStackLayout Spacing="15">
+                            <mi:MauiIcon Icon="{mi:FontAwesomeSolid CalendarDay}" IconColor="{StaticResource Primary}"/>
+                            <Label 
+                                Text="Dagtickets"
+                                Style="{StaticResource Title}"
+                                VerticalOptions="Center" 
+                                HorizontalTextAlignment="Center" />
+                        </HorizontalStackLayout>
+                        <BoxView Color="{StaticResource Primary}"
+                                HeightRequest="2"
+                                HorizontalOptions="Fill" />
+                        <Grid RowSpacing="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <!--Row 1-->
+                            <mi:MauiIcon Grid.Column="0" Margin="10"
+                                    Icon="{mi:FontAwesomeSolid User}" IconSize="Medium" IconColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"/>
+                            <Label Grid.Column="1" 
+                                    Text="Standaard" VerticalTextAlignment="Center"/>
+                            
+                            <HorizontalStackLayout Grid.Column="2">
+                                <Button Style="{StaticResource QuantityButton}"
+                                        Text="{mi:FontAwesomeSolid Minus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
+                                <Entry Style="{StaticResource QuantityEntry}"
+                                       Text="0" HorizontalTextAlignment="Center"/>
+                                <Button Style="{StaticResource QuantityButton}"
+                                        Text="{mi:FontAwesomeSolid Plus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
+                            </HorizontalStackLayout>
+
+                            <!--Row 2-->
+                            <mi:MauiIcon Grid.Row="1" Grid.Column="0" Margin="10"
+                                    Icon="{mi:FontAwesomeSolid Crown}" IconSize="Medium" IconColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"/>
+                            <Label Grid.Row="1" Grid.Column="1" 
+                                    Text="VIP" VerticalTextAlignment="Center"/>
+
+                            <HorizontalStackLayout Grid.Row="1" Grid.Column="2">
+                                <Button Style="{StaticResource QuantityButton}"
+                                        Text="{mi:FontAwesomeSolid Minus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
+                                <Entry Style="{StaticResource QuantityEntry}"
+                                       Text="0" HorizontalTextAlignment="Center"/>
+                                <Button Style="{StaticResource QuantityButton}"
+                                        Text="{mi:FontAwesomeSolid Plus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+                <Border>
+                    <VerticalStackLayout Padding="0" Spacing="15">
+                        <HorizontalStackLayout Spacing="15">
+                            <mi:MauiIcon Icon="{mi:FontAwesomeSolid CalendarWeek}" IconColor="{StaticResource Primary}"/>
+                            <Label 
+                                Text="Combitickets"
+                                Style="{StaticResource Title}"
+                                VerticalOptions="Center" 
+                                HorizontalTextAlignment="Center" />
+                        </HorizontalStackLayout>
+                        <BoxView Color="{StaticResource Primary}"
+                            HeightRequest="2"
+                            HorizontalOptions="Fill" />
+                        <Picker Title="Aantal dagen">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:Int32}">
+                                    <x:Int32>1</x:Int32>
+                                    <x:Int32>2</x:Int32>
+                                    <x:Int32>3</x:Int32>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        <BoxView Color="{StaticResource Primary}"
+                            HeightRequest="2"
+                            HorizontalOptions="Fill" />
+                        <Grid RowSpacing="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <!--Row 1-->
+                            <mi:MauiIcon Grid.Column="0" Margin="10"
+                                Icon="{mi:FontAwesomeSolid User}" IconSize="Medium" IconColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"/>
+                            <Label Grid.Column="1" 
+                                Text="Standaard" VerticalTextAlignment="Center"/>
+
+                            <HorizontalStackLayout Grid.Column="2">
+                                <Button Style="{StaticResource QuantityButton}"
+                                    Text="{mi:FontAwesomeSolid Minus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
+                                <Entry Style="{StaticResource QuantityEntry}"
+                                    Text="0" HorizontalTextAlignment="Center" />
+                                <Button Style="{StaticResource QuantityButton}"
+                                    Text="{mi:FontAwesomeSolid Plus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
+                            </HorizontalStackLayout>
+
+                            <!--Row 2-->
+                            <mi:MauiIcon Grid.Row="1" Grid.Column="0" Margin="10"
+                                Icon="{mi:FontAwesomeSolid Crown}" IconSize="Medium" 
+                                         IconColor="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"/>
+                            <Label Grid.Row="1" Grid.Column="1" 
+                                Text="VIP" VerticalTextAlignment="Center"/>
+
+                            <HorizontalStackLayout Grid.Row="1" Grid.Column="2">
+                                <Button Style="{StaticResource QuantityButton}"
+                                    Text="{mi:FontAwesomeSolid Minus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
+                                <Entry Style="{StaticResource QuantityEntry}"
+                                    Text="0" HorizontalTextAlignment="Center"/>
+                                <Button Style="{StaticResource QuantityButton}"
+                                    Text="{mi:FontAwesomeSolid Plus, IconSize=Small, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+                <Border>
+                    <Editor Placeholder="Opmerkingen"
+                            HeightRequest="200"/>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button Grid.Row="1"
+                Margin="30"
+                Text="Bestellen"
+                ImageSource="{mi:FontAwesomeSolid Icon=CartShopping, IconSize=Large, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}"
+                Clicked="OnOrderClicked"/>
+    </Grid>
+</ContentPage>

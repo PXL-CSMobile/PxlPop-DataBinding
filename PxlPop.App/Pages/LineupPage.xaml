@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:PxlPop.App.Models"
+             x:Class="PxlPop.App.Pages.LineupPage"
+             Title="LineupPage" Appearing="OnPageAppearing">
+    <Shell.TitleView>
+        <Label Text="Line-up" Style="{StaticResource ShellTitle}"></Label>
+    </Shell.TitleView>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ActivityIndicator Grid.RowSpan="2" x:Name="indicator"
+                           Color="{StaticResource Primary}" />
+        <Picker Title="Selecteer departement" Margin="15,30" x:Name="departmentPicker" SelectedIndexChanged="OnDepartmentChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Business</x:String>
+                    <x:String>Education</x:String>
+                    <x:String>Healthcare</x:String>
+                    <x:String>Digital</x:String>
+                    <x:String>Media &amp; Tourism</x:String>
+                    <x:String>People &amp; Society</x:String>
+                    <x:String>Green &amp; Tech</x:String>
+                    <x:String>Music</x:String>
+                    <x:String>MAD</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <CollectionView Grid.Row="1" x:Name="lessonsCollectionView" Margin="30" IsGrouped="True">
+            <CollectionView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding Day}" 
+                           Padding="0, 0, 0, 20"
+                           BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+                           TextColor="{StaticResource Primary}"
+                           FontSize="Title"
+                           FontAttributes="Bold" />
+                </DataTemplate>
+            </CollectionView.GroupHeaderTemplate>
+            <CollectionView.GroupFooterTemplate>
+                <DataTemplate>
+                    <BoxView BackgroundColor="{StaticResource Primary}" HeightRequest="1" Margin="0,0,0,20"/>
+                </DataTemplate>
+            </CollectionView.GroupFooterTemplate>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Grid RowSpacing="15" ColumnSpacing="15">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped"
+                                                      NumberOfTapsRequired="2" CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <VerticalStackLayout Grid.RowSpan="2" VerticalOptions="Center">
+                                <Label Text="{Binding Begin, StringFormat='{0:HH}'}" FontFamily="Helvetica" 
+                                    FontSize="Large" HorizontalOptions="Center"/>
+                                <Label Text="{Binding Begin, StringFormat='{0:mm}'}" FontFamily="Helvetica" 
+                                    FontSize="Large" HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <Label Text="{Binding Name}" Style="{StaticResource Title}" FontSize="16"
+                                   Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Lecturers}"
+                                   Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Start"/>
+                            
+                        </Grid>
+                        
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

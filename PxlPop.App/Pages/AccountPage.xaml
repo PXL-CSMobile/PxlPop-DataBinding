@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PxlPop.App.Pages.AccountPage"
+             Title="Account"
+             Appearing="OnPageAppearing">
+    <Shell.TitleView>
+        <Label Text="Account" Style="{StaticResource ShellTitle}"></Label>
+    </Shell.TitleView>
+    <TableView HasUnevenRows="True" Intent="Data">
+        <TableRoot>
+            <TableSection Title="Account">
+                <EntryCell Label="Gebruikersnaam"/>
+            </TableSection>
+            <TableSection Title="Weergave">
+                <SwitchCell Text="Enable dark mode" 
+                            x:Name="darkThemeSwitch" 
+                            OnChanged="OnDarkModeToggled"
+                            OnColor="{StaticResource Primary}" />
+                <ViewCell>
+                    <Grid Padding="15" ColumnDefinitions="*,Auto">
+                        <Label Text="Taal" Grid.Column="0" VerticalOptions="Center"/>
+                        <Picker SelectedIndex="0" Grid.Column="1" MinimumWidthRequest="100">
+                            <Picker.Items>
+                                <x:String>Nederlands</x:String>
+                                <x:String>English</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+                </ViewCell>
+            </TableSection>
+            <TableSection Title="Meldingen">
+                <SwitchCell Text="Meldingen toestaan" 
+                            x:Name="notificationsSwitch" 
+                            OnChanged="OnNotificationsToggled"
+                            OnColor="{StaticResource Primary}" />
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>

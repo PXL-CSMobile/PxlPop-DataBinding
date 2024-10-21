@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             x:Class="PxlPop.App.Pages.InfoParkingPage"
+             Title="InfoParkingPage">
+    <Shell.TitleView>
+        <Label Text="Info" Style="{StaticResource ShellTitle}"></Label>
+    </Shell.TitleView>
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Style="{StaticResource PageLayout}">
+            <HorizontalStackLayout Spacing="15">
+                <mi:MauiIcon Icon="{mi:FontAwesomeSolid Car}" IconColor="{StaticResource Primary}"/>
+                <Label 
+                    Text="Parking"
+                    Style="{StaticResource Title}"
+                    VerticalOptions="Center" 
+                    HorizontalTextAlignment="Center" />
+            </HorizontalStackLayout>
+            <BoxView Color="{StaticResource Primary}"
+                HeightRequest="2"
+                HorizontalOptions="Fill" />
+            <Label>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sagittis quis mauris ac suscipit. Suspendisse consequat ipsum vehicula erat dictum consectetur. Integer nec sollicitudin magna, sed porttitor urna. Cras eget magna sit amet lacus pellentesque finibus eget ut tellus. Fusce at mauris eu orci interdum tristique. Sed vel nibh pretium, iaculis felis consectetur, maximus mi. Aliquam eu aliquet ex, nec porta enim. In dignissim diam ex, non finibus erat ultrices eu.
+            </Label>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

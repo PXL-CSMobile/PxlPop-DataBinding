@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PxlPop.App.Pages.FavouritesPage"
+             Title="FavouritesPage">
+    <Shell.TitleView>
+        <Label Text="Favourites" Style="{StaticResource ShellTitle}"></Label>
+    </Shell.TitleView>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <SearchBar Placeholder="Zoeken..." HorizontalOptions="Fill"
+                   Margin="30"/>
+        
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Style="{StaticResource PageLayout}" >
+                <Label FontAttributes="Italic" TextColor="{StaticResource Gray300}" Text="Hier komt later een CollectionView"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

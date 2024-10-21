@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             x:Class="PxlPop.App.Pages.OrderPage"
+             Title="Bestelling">
+    <Shell.TitleView>
+        <Label Text="Bestelling" Style="{StaticResource ShellTitle}"></Label>
+    </Shell.TitleView>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollView>
+            <VerticalStackLayout Style="{StaticResource PageLayout}">
+            <Label Text="Gegevens" Style="{StaticResource Title}"/>
+            <BoxView Color="{StaticResource Primary}"
+                    HeightRequest="2"
+                    HorizontalOptions="Fill" />
+                <Label Text="Voornaam" />
+            <Entry x:Name="firstNameEntry"/>
+            <Label Text="Achternaam" />
+            <Entry x:Name="lastNameEntry"/>
+            <Label Text="GSM/Telefoon" />
+            <Entry x:Name="phoneEntry"/>
+            <Label Text="E-mail" />
+            <Entry x:Name="emailEntry" >
+                <Entry.Behaviors>
+                    <toolkit:EmailValidationBehavior 
+                        InvalidStyle="{StaticResource InvalidEntry}"
+                        ValidStyle="{StaticResource ValidEntry}"
+                        Flags="ValidateOnValueChanged" />
+                </Entry.Behaviors>
+            </Entry>
+            <HorizontalStackLayout>
+                <CheckBox x:Name="viaEmailCheckBox" IsChecked="False" CheckedChanged="OnEmailCheckedChanged"/>
+                <Label Text="Verstuur tickets via email" TextColor="Green" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout x:Name="addressLayout" Spacing="15" IsVisible="True">
+                <Label Text="Levering" Style="{StaticResource Title}"/>
+                <BoxView Color="{StaticResource Primary}"
+                    HeightRequest="2"
+                    HorizontalOptions="Fill" />
+                <Label Text="Leverdatum"/>
+                <DatePicker x:Name="deliveryDatePicker" HorizontalOptions="Fill" />
+                <Label Text="Adres" />
+                <Entry x:Name="addressEntry"/>
+                <Entry x:Name="zipEntry" Placeholder="postcode"/>
+                <Entry x:Name="cityEntry" Placeholder="stad/gemeente"/>
+            </VerticalStackLayout>
+
+                
+            </VerticalStackLayout>
+        </ScrollView>
+        <Button Text="Betalen" Grid.Row="1"
+                Margin="30"
+             ImageSource="{mi:FontAwesomeSolid Icon=CreditCard, IconSize=Large, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}"
+             Clicked="OnPaymentClicked"/>
+    </Grid>
+</ContentPage>

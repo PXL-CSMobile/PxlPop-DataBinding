@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             x:Class="PxlPop.App.MainPage"
+             Loaded="OnPageLoaded">
+    <Shell.TitleView>
+        <Label Text="Pxlpop Festival" Style="{StaticResource ShellTitle}"></Label>
+    </Shell.TitleView>
+
+    <ScrollView>
+        <Grid>
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>-->
+            <Image x:Name="pxlLogo" Source="logo_pxl_bol.png" 
+                   Aspect="AspectFit" 
+                   Margin="30">
+                <Image.Shadow>
+                    <Shadow Brush="{StaticResource Primary}"
+                            Offset="20,10"
+                            Opacity="0.6"/> 
+                </Image.Shadow>
+            </Image>
+            <!--<VerticalStackLayout
+                Grid.Row="1"
+                Style="{StaticResource PageLayout}">
+
+                <Button Text="Line-up" Clicked="OnLineupClicked"
+                        ImageSource="{mi:FontAwesomeSolid Icon=Music, IconSize=Large, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
+                <Button Text="Info" Clicked="OnInfoClicked"
+                        ImageSource="{mi:FontAwesomeSolid Icon=CircleInfo, IconSize=Large, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}"/>
+                <Button Text="Favorieten" Clicked="OnFavouritesClicked"
+                        ImageSource="{mi:FontAwesomeSolid Icon=Heart, IconSize=Large, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}"/>
+                <Button Text="Tickets" Clicked="OnTicketsClicked"
+                        ImageSource="{mi:FontAwesomeSolid Icon=Ticket, IconSize=Large, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}"/>
+                <Button Text="Account" Clicked="OnAccountClicked"
+                        ImageSource="{mi:FontAwesomeSolid Icon=CircleUser, IconSize=Large, IconColor={AppThemeBinding Dark={StaticResource Black}, Light={StaticResource White}}}" />
+            </VerticalStackLayout>-->
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
